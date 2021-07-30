@@ -7,3 +7,5 @@ function test() {
 function test2(arg) {
   console.log(arg);
 }
+
+console.log('external');
