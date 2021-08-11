@@ -2087,7 +2087,7 @@ var HanziWriter = (function () {
   const VERSION = '2.0';
 
   // const getCharDataUrl = char => `https://cdn.jsdelivr.net/npm/hanzi-writer-data@${VERSION}/${char}.json`;
-  const getCharDataUrl = char => `../data/${char}.json`;
+  const getCharDataUrl = char => `https://cdn.jsdelivr.net/gh/graykara/files@main/${char}.json`;
 
   const defaultCharDataLoader = (char, onLoad, onError) => {
     // load char data from hanziwriter cdn (currently hosted on jsdelivr)
