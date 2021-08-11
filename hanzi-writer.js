@@ -1253,6 +1253,7 @@ var HanziWriter = (function () {
         });
 
         if (highlightOnComplete) {
+          handleSuccess();
           animation = animation.concat(highlightCompleteChar(this._character, (strokeHighlightDuration || 0) * 2));
         }
       }
