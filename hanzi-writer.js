@@ -1244,6 +1244,8 @@ var HanziWriter = (function () {
       this._mistakesOnStroke = 0;
       this._currentStrokeIndex += 1;
       const isComplete = this._currentStrokeIndex === strokes.length;
+      
+      window.handleDrawingStroke();
 
       if (isComplete) {
         this._isActive = false;
