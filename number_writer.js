@@ -16,7 +16,8 @@ var HanziWriter = (function () {
     return arr[arr.length - 1];
   }
   function copyAndMergeDeep(base, override) {
-    const output = { ...base
+    const output = {
+      ...base
     };
 
     for (const key in override) {
@@ -109,7 +110,7 @@ var HanziWriter = (function () {
   const ua = ((_globalObj$navigator = globalObj.navigator) === null || _globalObj$navigator === void 0 ? void 0 : _globalObj$navigator.userAgent) || '';
   const isMsBrowser = ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0; // eslint-disable-next-line @typescript-eslint/no-empty-function
 
-  const noop = () => {};
+  const noop = () => { };
 
   class RenderState {
     constructor(character, options, onStateChange = noop) {
@@ -649,7 +650,8 @@ var HanziWriter = (function () {
       const leniencyAdjustment = 0.6 * (closestMatchDist + avgDist) / (2 * avgDist);
       const {
         isMatch
-      } = getMatchData(points, strokes[strokeNum], { ...options,
+      } = getMatchData(points, strokes[strokeNum], {
+        ...options,
         leniency: (options.leniency || 1) * leniencyAdjustment
       });
       return isMatch;
@@ -1245,6 +1247,8 @@ var HanziWriter = (function () {
       this._currentStrokeIndex += 1;
       const isComplete = this._currentStrokeIndex === strokes.length;
 
+      window.handleDrawingStroke();
+
       if (isComplete) {
         this._isActive = false;
         onComplete === null || onComplete === void 0 ? void 0 : onComplete({
@@ -1253,7 +1257,7 @@ var HanziWriter = (function () {
         });
 
         if (highlightOnComplete) {
-          handleSuccess();
+          window.handleSuccess();
           animation = animation.concat(highlightCompleteChar(this._character, (strokeHighlightDuration || 0) * 2));
         }
       }
@@ -1826,7 +1830,7 @@ var HanziWriter = (function () {
         commands.push(ctx => ctx.bezierCurveTo(...params));
       } else if (cmd === 'Q') {
         commands.push(ctx => ctx.quadraticCurveTo(...params));
-      } else ;
+      } else;
     }
 
     return ctx => commands.forEach(cmd => cmd(ctx));
@@ -2281,7 +2285,8 @@ var HanziWriter = (function () {
           return _loadingManager;
         }
 
-        return new LoadingManager({ ...defaultOptions,
+        return new LoadingManager({
+          ...defaultOptions,
           ...options
         });
       })();
@@ -2500,7 +2505,8 @@ var HanziWriter = (function () {
         if (this._character && this._renderState && this._positioner) {
           this.cancelQuiz();
           this._quiz = new Quiz(this._character, this._renderState, this._positioner);
-          this._options = { ...this._options,
+          this._options = {
+            ...this._options,
             ...quizOptions
           };
 
@@ -2573,7 +2579,8 @@ var HanziWriter = (function () {
     }
 
     _assignOptions(options) {
-      const mergedOptions = { ...defaultOptions,
+      const mergedOptions = {
+        ...defaultOptions,
         ...options
       }; // backfill strokeAnimationSpeed if deprecated strokeAnimationDuration is provided instead
 
@@ -2595,7 +2602,8 @@ var HanziWriter = (function () {
 
 
     _fillWidthAndHeight(options) {
-      const filledOpts = { ...options
+      const filledOpts = {
+        ...options
       };
 
       if (filledOpts.width && !filledOpts.height) {
